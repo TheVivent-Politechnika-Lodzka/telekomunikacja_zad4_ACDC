@@ -2,6 +2,7 @@ from ac import Recorder
 from ca import Player
 import keyboard as kb
 
+
 test = Recorder()
 
 while not kb.is_pressed("q"):
