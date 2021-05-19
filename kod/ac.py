@@ -13,7 +13,7 @@ class Recorder:
         """
 
         self.device = device if device!=None else sc.default_microphone()
-        
+
         self.samplerate = samplerate
         
         self.channels = channels
@@ -28,11 +28,11 @@ class Recorder:
 
         # jeżeli self.audiosave jest puste to przypisz do niego nagranie
         if type(self.audiosave) != np.ndarray:
-            self.audiosave = self.device.record(seconds * self.samplerate, self.samplerate, self.channels)
+            self.audiosave = self.device.record(int(seconds * self.samplerate), self.samplerate, self.channels)
         # jeżeli self.audiosave nie jest puste dopisz do niego nagranie
         else:
-            test = self.device.record(seconds * self.samplerate, self.samplerate, self.channels)
-            self.audiosave = np.concatenate((self.audiosave, test), axis=None)
+            test = self.device.record(int(seconds * self.samplerate), self.samplerate, self.channels)
+            self.audiosave = np.concatenate((self.audiosave, test))
 
 
     def getAudio(self) -> np.ndarray:
